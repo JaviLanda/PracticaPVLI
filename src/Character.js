@@ -4,10 +4,20 @@ var dice = require('./dice');
 function Character(name, features) {
   features = features || {};
   this.name = name;
-  // Extrae del parámetro features cada característica y alamacénala en
-  // una propiedad.
+  this.party = null;
+  this.initiative = features.iniciative || 0;
+  this.defense = features.defense || 0;
+  this.weapon = null;
+  this._hp = features.hp || 0;
   this._mp = features.mp || 0;
   this.maxMp = features.maxMp || this._mp;
+  this.maxHp = features.maxHp || this._hp || 15;
+
+  // Extrae del parámetro features cada característica y alamacénala en
+  // una propiedad.
+
+  //this._mp = features.mp || 0;
+  //this.maxMp = features.maxMp || this._mp;
 }
 
 Character.prototype._immuneToEffect = ['name', 'weapon'];
@@ -32,8 +42,12 @@ Object.defineProperty(Character.prototype, 'mp', {
 });
 
 Object.defineProperty(Character.prototype, 'hp', {
-  // Puedes usar la mísma ténica que antes para mantener el valor de hp en el
-  // rango correcto.
+  get: function () {
+    return this._hp;
+  },
+  set: function (newValue) {
+    this._hp = Math.max(0, Math.min(newValue, this.maxHp));
+  }
 });
 
 // Puedes hacer algo similar a lo anterior para mantener la defensa entre 0 y

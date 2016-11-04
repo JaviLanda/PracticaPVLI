@@ -30,12 +30,14 @@ Scroll.prototype.constructor = Scroll;
 Scroll.prototype.canBeUsed = function (mp) {
   // El pergamino puede usarse si los puntos de maná son superiores o iguales
   // al coste del hechizo.
-  if(mp >= )
-};
 
+}
 function Effect(variations) {
-   var variations;
-   var effect;
+   for(var name in variations){
+    this[name] = variations[name];
+   }
+
+   
    // Copia las propiedades que se encuentran en variations como propiedades de
    // este objeto.(HECHO)
 }
