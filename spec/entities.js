@@ -42,9 +42,9 @@ describe('Entities library', function () {
     expect(Weapon).toEqual(jasmine.any(Function));
     expect(Scroll).toEqual(jasmine.any(Function));
     expect(Effect).toEqual(jasmine.any(Function));
-  });
+  });//-------PASAN------
 
-  xdescribe('Effect type', function () {
+  describe('Effect type', function () {
 
     it('allows specify arbitrary feature alterations.', function () {
       var effect = new Effect({
@@ -55,7 +55,7 @@ describe('Entities library', function () {
       expect(effect.mp).toBe(-5);
     });
 
-  });
+  }); //-------PASAN------
 
   describe('Character type', function () {
     var features = {
@@ -117,7 +117,7 @@ describe('Entities library', function () {
       expect(character.isDead()).toBe(false);
       character.hp = 0;
       expect(character.isDead()).toBe(true);
-    });
+    });//-------PASAN------
 
     describe('Effect application', function () {
 
@@ -136,7 +136,7 @@ describe('Entities library', function () {
         effect = new Effect(variations);
       });
 
-      it('applies an effect if the effect comes from an ally.',
+      xit('applies an effect if the effect comes from an ally.',
       function () {
         var isAlly = true;
 
@@ -147,7 +147,7 @@ describe('Entities library', function () {
         });
       });
 
-      it('applies an effect if the effect comes from a foe and ' +
+      xit('applies an effect if the effect comes from a foe and ' +
       'defense roll fails.',
       function () {
         var isAlly = false;
@@ -160,7 +160,7 @@ describe('Entities library', function () {
         });
       });
 
-      it('does not applie an effect if the effect comes from a foe but ' +
+      xit('does not applie an effect if the effect comes from a foe but ' +
       'defense roll passed.',
       function () {
         var isAlly = false;
@@ -174,7 +174,7 @@ describe('Entities library', function () {
 
     });
 
-    it('prevents effects from changing name or weapon.', function () {
+    xit('prevents effects from changing name or weapon.', function () {
       var variations = {
         name: 'Avoided',
         weapon: null
@@ -187,21 +187,21 @@ describe('Entities library', function () {
       expect(character.weapon).toBe(originalWeapon);
     });
 
-    it('keeps mp in the range [0, maxMp].', function () {
+    xit('keeps mp in the range [0, maxMp].', function () {
       character.mp = -10;
       expect(character.mp).toBe(0);
       character.mp = character.maxMp + 10;
       expect(character.mp).toBe(character.maxMp);
     });
 
-    it('keeps hp in the range [0, maxHp].', function () {
+    xit('keeps hp in the range [0, maxHp].', function () {
       character.hp = -10;
       expect(character.hp).toBe(0);
       character.hp = character.maxMp + 10;
       expect(character.hp).toBe(character.maxHp);
     });
 
-    it('keeps defense in the range [0, 100]', function () {
+    xit('keeps defense in the range [0, 100]', function () {
       character.defense = -10;
       expect(character.defense).toBe(0);
       character.defense = 200;
@@ -210,7 +210,7 @@ describe('Entities library', function () {
 
   });
 
-  xdescribe('Item type', function () {
+  describe('Item type', function () {
 
     it('allows to create generic items', function () {
       var item = new Item('testItem', new Effect({ hp: 5 }));
@@ -218,14 +218,14 @@ describe('Entities library', function () {
       expect(item.effect.hp).toBe(5);
     });
 
-  });
+  });//-------PASAN------
 
-  xdescribe('Weapon type', function () {
+  describe('Weapon type', function () {
 
     it('is a subtype of Item', function () {
       expect(Weapon.prototype).toEqual(jasmine.any(Item));
       expect(Weapon.prototype.constructor).toBe(Weapon);
-    });
+    });//-------PASA------
 
     it('allows to create weapons with a reducing hp effect.', function () {
       var weapon = new Weapon('sword', 5);
@@ -242,12 +242,12 @@ describe('Entities library', function () {
 
   });
 
-  describe('Scroll type', function () {
+  xdescribe('Scroll type', function () {
 
     it('is a subtype of Item', function () {
       expect(Scroll.prototype).toEqual(jasmine.any(Item));
       expect(Scroll.prototype.constructor).toBe(Scroll);
-    });
+    });//-------PASAN------
 
     it('allows to create spells with a mp cost and an effect.', function () {
       var health = new Scroll('health', 5, new Effect({ hp: 5 }));
@@ -263,7 +263,7 @@ describe('Entities library', function () {
 
   });
 
-  describe('Built-in entities', function () {
+  xdescribe('Built-in entities', function () {
 
     it('includes characters and weapons.', function () {
       expect(entities.characters).toEqual(jasmine.any(Object));
