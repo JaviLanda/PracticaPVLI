@@ -261,7 +261,7 @@ describe('Entities library', function () {
       expect(health.canBeUsed(4)).toBe(false);
     });
 
-  });
+  });//-------PASAN------
 
   describe('Built-in entities', function () {
 
@@ -273,7 +273,7 @@ describe('Entities library', function () {
 
     describe('Characters', function () {
 
-      xit('includes a tank.', function () {
+      it('includes a tank.', function () {
         var character = entities.characters.heroTank;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -288,7 +288,7 @@ describe('Entities library', function () {
         }));
       });
 
-      xit('includes a wizard.', function () {
+      it('includes a wizard.', function () {
         var character = entities.characters.heroWizard;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -303,7 +303,7 @@ describe('Entities library', function () {
         }));
       });
 
-      xit('includes a skeleton.', function () {
+      it('includes a skeleton.', function () {
         var character = entities.characters.monsterSkeleton;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -318,7 +318,7 @@ describe('Entities library', function () {
         }));
       });
 
-      xit('includes a slime.', function () {
+      it('includes a slime.', function () {
         var character = entities.characters.monsterSlime;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -333,7 +333,7 @@ describe('Entities library', function () {
         }));
       });
 
-      xit('includes a bat.', function () {
+      it('includes a bat.', function () {
         var character = entities.characters.monsterBat;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -348,7 +348,7 @@ describe('Entities library', function () {
         }));
       });
 
-    });
+    });//-------PASAN------
 
     describe('Weapons', function () {
 
@@ -385,7 +385,7 @@ describe('Entities library', function () {
         }));
       });
 
-    });
+    });//-------PASAN------
 
     describe('Scrolls', function () {
 
@@ -407,7 +407,7 @@ describe('Entities library', function () {
         }));
       });
 
-    });
+    });//-------PASAN------
 
   });
 });

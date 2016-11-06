@@ -23,7 +23,7 @@ var lib = module.exports = {
       return new items.Weapon('fangs', new Effect({ hp: -10 }));
     },
     get pseudopode() {
-      return new items.Weapon('pseudopode', new Effect({ hp: -5, mp: -5 })); //¿new Effect({  })?
+      return new items.Weapon('pseudopode', new Effect({ hp: -5, mp: -5 })); 
     },
     // Implementa los colmillos y el pseudópodo
     // VAMOOOOS HECHO
@@ -67,7 +67,7 @@ var lib = module.exports = {
       return new Character('slime', {
         initiative: 2,
         defense: 40,
-        weapon: lib.weapons.pseudopod,
+        weapon: lib.weapons.pseudopode,
         hp: 40,
         mp: 50
       });
