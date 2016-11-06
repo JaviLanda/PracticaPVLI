@@ -227,13 +227,13 @@ describe('Entities library', function () {
       expect(Weapon.prototype.constructor).toBe(Weapon);
     });//-------PASA------
 
-    it('allows to create weapons with a reducing hp effect.', function () {
+    xit('allows to create weapons with a reducing hp effect.', function () {
       var weapon = new Weapon('sword', 5);
       expect(weapon.effect).toEqual(jasmine.any(Effect));
       expect(weapon.effect.hp).toBe(-5);
     });
 
-    it('allows to create weapons with extra effect.', function () {
+    xit('allows to create weapons with extra effect.', function () {
       var weapon = new Weapon('sword', 5, new Effect({ mp: -5 }));
       expect(weapon.effect).toEqual(jasmine.any(Effect));
       expect(weapon.effect.hp).toBe(-5);
@@ -242,7 +242,7 @@ describe('Entities library', function () {
 
   });
 
-  xdescribe('Scroll type', function () {
+  describe('Scroll type', function () {
 
     it('is a subtype of Item', function () {
       expect(Scroll.prototype).toEqual(jasmine.any(Item));
@@ -255,7 +255,7 @@ describe('Entities library', function () {
       expect(health.effect).toEqual(jasmine.any(Effect));
     });
 
-    xit('can test if a character can pay its cost.', function () {
+    it('can test if a character can pay its cost.', function () {
       var health = new Scroll('health', 5, new Effect({ hp: 5 }));
       expect(health.canBeUsed(10)).toBe(true);
       expect(health.canBeUsed(4)).toBe(false);
@@ -263,7 +263,7 @@ describe('Entities library', function () {
 
   });
 
-  xdescribe('Built-in entities', function () {
+  describe('Built-in entities', function () {
 
     it('includes characters and weapons.', function () {
       expect(entities.characters).toEqual(jasmine.any(Object));
@@ -271,9 +271,9 @@ describe('Entities library', function () {
       expect(entities.scrolls).toEqual(jasmine.any(Object));
     });
 
-    xdescribe('Characters', function () {
+    describe('Characters', function () {
 
-      it('includes a tank.', function () {
+      xit('includes a tank.', function () {
         var character = entities.characters.heroTank;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -288,7 +288,7 @@ describe('Entities library', function () {
         }));
       });
 
-      it('includes a wizard.', function () {
+      xit('includes a wizard.', function () {
         var character = entities.characters.heroWizard;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -303,7 +303,7 @@ describe('Entities library', function () {
         }));
       });
 
-      it('includes a skeleton.', function () {
+      xit('includes a skeleton.', function () {
         var character = entities.characters.monsterSkeleton;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -318,7 +318,7 @@ describe('Entities library', function () {
         }));
       });
 
-      it('includes a slime.', function () {
+      xit('includes a slime.', function () {
         var character = entities.characters.monsterSlime;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -333,7 +333,7 @@ describe('Entities library', function () {
         }));
       });
 
-      it('includes a bat.', function () {
+      xit('includes a bat.', function () {
         var character = entities.characters.monsterBat;
         expect(character).toEqual(jasmine.any(Character));
         expect(character.weapon).toEqual(jasmine.any(Weapon));
@@ -350,7 +350,7 @@ describe('Entities library', function () {
 
     });
 
-    xdescribe('Weapons', function () {
+    describe('Weapons', function () {
 
       it('includes a sword.', function () {
         var weapon = entities.weapons.sword;
@@ -387,7 +387,7 @@ describe('Entities library', function () {
 
     });
 
-    xdescribe('Scrolls', function () {
+    describe('Scrolls', function () {
 
       it('includes health.', function () {
         var scroll = entities.scrolls.health;

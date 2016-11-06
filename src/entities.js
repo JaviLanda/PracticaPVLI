@@ -14,12 +14,19 @@ var lib = module.exports = {
 
   weapons: {
     get sword() {
-      return new items.Weapon('sword', 25);
+      return new items.Weapon('sword', new Effect({ hp: -25 }));
     },
     get wand() {
-      return new items.Weapon('wand', 5);
+      return new items.Weapon('wand', new Effect({ hp: -5 }));
+    },
+    get fangs() {
+      return new items.Weapon('fangs', new Effect({ hp: -10 }));
+    },
+    get pseudopode() {
+      return new items.Weapon('pseudopode', new Effect({ hp: -5, mp: -5 })); //¿new Effect({  })?
     },
     // Implementa los colmillos y el pseudópodo
+    // VAMOOOOS HECHO
   },
 
   characters: {
@@ -34,7 +41,17 @@ var lib = module.exports = {
       });
     },
 
+    get heroWizard() {
+      return new Character('Wizard', {
+        initiative: 4,
+        weapon: lib.weapons.wand,
+        defense: 50,
+        hp: 40,
+        mp: 100
+      });
+    },
     // Implementa el mago
+    // (HECHO)
 
     get monsterSkeleton() {
       return new Character('skeleton', {
@@ -46,7 +63,28 @@ var lib = module.exports = {
       });
     },
 
+    get monsterSlime() {
+      return new Character('slime', {
+        initiative: 2,
+        defense: 40,
+        weapon: lib.weapons.pseudopod,
+        hp: 40,
+        mp: 50
+      });
+    },
+
+    get monsterBat() {
+      return new Character('bat', {
+        initiative: 30,
+        defense: 80,
+        weapon: lib.weapons.fangs,
+        hp: 5,
+        mp: 0
+      });
+    },
+
     // Implementa el limo y el murciélago
+    //(HECHO)
   },
 
   scrolls: {
@@ -55,7 +93,12 @@ var lib = module.exports = {
       return new items.Scroll('health', 10, new Effect({ hp: 25 }));
     },
 
+    get fireball() {
+      return new items.Scroll('fireball', 30, new Effect({ hp: -25 }));
+    },
+
     // Implementa la bola de fuego
+    // (HECHO)
 
   }
 };
