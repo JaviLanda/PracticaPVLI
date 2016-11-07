@@ -136,7 +136,7 @@ describe('Entities library', function () {
         effect = new Effect(variations);
       });
 
-      xit('applies an effect if the effect comes from an ally.',
+      it('applies an effect if the effect comes from an ally.',
       function () {
         var isAlly = true;
 
@@ -145,9 +145,9 @@ describe('Entities library', function () {
           expect(character[feature])
             .toBe(features[feature] + variations[feature]);
         });
-      });
+      });//-------PASAN------
 
-      xit('applies an effect if the effect comes from a foe and ' +
+      it('applies an effect if the effect comes from a foe and ' +
       'defense roll fails.',
       function () {
         var isAlly = false;
@@ -160,7 +160,7 @@ describe('Entities library', function () {
         });
       });
 
-      xit('does not applie an effect if the effect comes from a foe but ' +
+      it('does not applie an effect if the effect comes from a foe but ' +
       'defense roll passed.',
       function () {
         var isAlly = false;
@@ -174,7 +174,7 @@ describe('Entities library', function () {
 
     });
 
-    xit('prevents effects from changing name or weapon.', function () {
+    it('prevents effects from changing name or weapon.', function () {
       var variations = {
         name: 'Avoided',
         weapon: null
@@ -187,19 +187,19 @@ describe('Entities library', function () {
       expect(character.weapon).toBe(originalWeapon);
     });
 
-    xit('keeps mp in the range [0, maxMp].', function () {
+    it('keeps mp in the range [0, maxMp].', function () {
       character.mp = -10;
       expect(character.mp).toBe(0);
       character.mp = character.maxMp + 10;
       expect(character.mp).toBe(character.maxMp);
     });
 
-    xit('keeps hp in the range [0, maxHp].', function () {
+    it('keeps hp in the range [0, maxHp].', function () {
       character.hp = -10;
       expect(character.hp).toBe(0);
       character.hp = character.maxMp + 10;
       expect(character.hp).toBe(character.maxHp);
-    });
+    });//-------PASAN------
 
     xit('keeps defense in the range [0, 100]', function () {
       character.defense = -10;
@@ -247,7 +247,7 @@ describe('Entities library', function () {
     it('is a subtype of Item', function () {
       expect(Scroll.prototype).toEqual(jasmine.any(Item));
       expect(Scroll.prototype.constructor).toBe(Scroll);
-    });//-------PASAN------
+    });
 
     it('allows to create spells with a mp cost and an effect.', function () {
       var health = new Scroll('health', 5, new Effect({ hp: 5 }));

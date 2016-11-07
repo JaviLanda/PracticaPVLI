@@ -24,15 +24,38 @@ function Character(name, features) {
 Character.prototype._immuneToEffect = ['name', 'weapon'];
 
 Character.prototype.isDead = function () {
-  if(this._hp > 0)
-    return false;
-  if(this._hp <= 0)
-    return true;
+ 
+  return this._hp <= 0;
+
   // Rellena el cuerpo de esta función 
   //(HECHO)
 };
 
 Character.prototype.applyEffect = function (effect, isAlly) {
+  if(isAlly){
+  
+    this.initiative = effect.initiative + this.initiative || this.initiative;
+    this.defense = effect.defense + this.defense || this.defense;
+    this.weapon = effect.weapon + this.weapon || this.weapon;
+    this._hp = effect.hp + this.hp || this.hp;
+    this._mp = effect.mp + this.mp || this.mp;
+    this.maxMp = effect.maxMp + this.maxMp || this.maxMp;
+    this.maxHp = effect.maxHp + this.maxHp || this.maxHp;
+    return true;
+  }
+  else if((dice.fakeD100 === 100)){
+    this.initiative = effect.initiative + this.initiative || this.initiative;
+    this.defense = effect.defense + this.defense || this.defense;
+    this.weapon = effect.weapon + this.weapon || this.weapon;
+    this._hp = effect.hp + this.hp || this.hp;
+    this._mp = effect.mp + this.mp || this.mp;
+    this.maxMp = effect.maxMp + this.maxMp || this.maxMp;
+    this.maxHp = effect.maxHp + this.maxHp || this.maxHp;
+    return true;
+  }
+  else if (dice.fakeD100 === 1){
+    return false;
+  }
 
 //DIOOOOOOOOSS COMO SE HACEEEEEEEEEEEEE JODEEERRR
   // Implementa las reglas de aplicación de efecto para modificar las
@@ -58,8 +81,17 @@ Object.defineProperty(Character.prototype, 'hp', {
   }
 });
 
+/*Object.defineProperty(Character.prototype, 'defense', {
+  get: function () {
+    return this.defense;
+  },
+  set: function (newValue) {
+    this.defense = Math.max(0, Math.min(newValue, 100));
+  }
+});*/
+
 // Puedes hacer algo similar a lo anterior para mantener la defensa entre 0 y
 // 100.
-// (HECHO)
+// 
 
 module.exports = Character;
