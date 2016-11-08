@@ -2,7 +2,8 @@
 
 function Item(name, effect) {
   this.name = name;
-  this.effect = effect;         
+  this.effect = effect;
+        
 }
 
 function Weapon(name, effect, damage, extraEffect) {
@@ -35,7 +36,7 @@ Scroll.prototype.canBeUsed = function (mp) {
   
   // El pergamino puede usarse si los puntos de maná son superiores o iguales
   // al coste del hechizo.
-  // (HECHO, PASA LOS TEST...)
+  // (HECHO)
 
 }
 function Effect(variations) {

@@ -1,13 +1,6 @@
 MODELO DE DATOS:
 -Test que faltan:(spec/entities.js)
 
-150 applies an effect if the effect comes from a foe and ' +
-      'defense roll fails.
-
-163 'does not applie an effect if the effect comes from a foe but ' +
-      'defense roll passed.',
-
-204 keeps defense in the range [0, 100]
 
 230 allows to create weapons with a reducing hp effect
 

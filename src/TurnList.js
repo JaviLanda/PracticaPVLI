@@ -18,6 +18,9 @@ TurnList.prototype.next = function () {
 };
 
 TurnList.prototype._sortByInitiative = function () {
+  
+  
+
   // Utiliza la función Array.sort(). ¡No te implementes tu propia
   // función de ordenación!
 };

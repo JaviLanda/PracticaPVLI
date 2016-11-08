@@ -145,7 +145,7 @@ describe('Entities library', function () {
           expect(character[feature])
             .toBe(features[feature] + variations[feature]);
         });
-      });//-------PASAN------
+      });
 
       it('applies an effect if the effect comes from a foe and ' +
       'defense roll fails.',
@@ -172,7 +172,7 @@ describe('Entities library', function () {
         });
       });
 
-    });
+    });//-------PASAN------
 
     it('prevents effects from changing name or weapon.', function () {
       var variations = {
@@ -199,16 +199,16 @@ describe('Entities library', function () {
       expect(character.hp).toBe(0);
       character.hp = character.maxMp + 10;
       expect(character.hp).toBe(character.maxHp);
-    });//-------PASAN------
+    });
 
-    xit('keeps defense in the range [0, 100]', function () {
+    it('keeps defense in the range [0, 100]', function () {
       character.defense = -10;
       expect(character.defense).toBe(0);
       character.defense = 200;
       expect(character.defense).toBe(100);
     });
 
-  });
+  });//-------PASAN------
 
   describe('Item type', function () {
 
@@ -227,13 +227,13 @@ describe('Entities library', function () {
       expect(Weapon.prototype.constructor).toBe(Weapon);
     });//-------PASA------
 
-    xit('allows to create weapons with a reducing hp effect.', function () {
+    it('allows to create weapons with a reducing hp effect.', function () {
       var weapon = new Weapon('sword', 5);
       expect(weapon.effect).toEqual(jasmine.any(Effect));
       expect(weapon.effect.hp).toBe(-5);
     });
 
-    xit('allows to create weapons with extra effect.', function () {
+    it('allows to create weapons with extra effect.', function () {
       var weapon = new Weapon('sword', 5, new Effect({ mp: -5 }));
       expect(weapon.effect).toEqual(jasmine.any(Effect));
       expect(weapon.effect.hp).toBe(-5);
