@@ -14,16 +14,16 @@ var lib = module.exports = {
 
   weapons: {
     get sword() {
-      return new items.Weapon('sword', new Effect({ hp: -25 }));
+      return new items.Weapon('sword', 25); //new Effect({ hp: -25 }));
     },
     get wand() {
-      return new items.Weapon('wand', new Effect({ hp: -5 }));
+      return new items.Weapon('wand', 5);
     },
     get fangs() {
-      return new items.Weapon('fangs', new Effect({ hp: -10 }));
+      return new items.Weapon('fangs', 10);
     },
     get pseudopode() {
-      return new items.Weapon('pseudopode', new Effect({ hp: -5, mp: -5 })); 
+      return new items.Weapon('pseudopode', 5, ({ mp: -5 })); 
     },
     // Implementa los colmillos y el pseudópodo
     // VAMOOOOS HECHO

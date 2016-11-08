@@ -3,15 +3,19 @@
 function Item(name, effect) {
   this.name = name;
   this.effect = effect;
+  
         
 }
 
-function Weapon(name, effect, damage, extraEffect) {
+function Weapon(name, damage, extraEffect) {
   extraEffect = extraEffect || new Effect({});
-  Item.call(this, name, effect);
-  this.damage = damage;
-  this.extraEffect = extraEffect || new Effect({});
 
+  Item.call(this, name, extraEffect);
+  this.effect.hp = -damage;
+  for (var name in extraEffect){
+    this.effect[name] = extraEffect[name];
+  }
+  
   // Haz que Weapon sea subtipo de Item haciendo que llame al constructor de
   // de Item.
   // (HECHO)
