@@ -14,7 +14,7 @@ var lib = module.exports = {
 
   weapons: {
     get sword() {
-      return new items.Weapon('sword', 25); //new Effect({ hp: -25 }));
+      return new items.Weapon('sword', 25); 
     },
     get wand() {
       return new items.Weapon('wand', 5);
