@@ -18,6 +18,8 @@ TurnList.prototype.next = function () {
   var Dead = false;
   var j = 0;
   this.turnNumber++;
+  
+  
   while(!Dead){
    j = j % this.list.length;
    var auxD = this._charactersById[this.list[j]]._isDead;
@@ -31,12 +33,11 @@ TurnList.prototype.next = function () {
   var obj = {number:this.turnNumber,
    party:this._charactersById[this.activeCharacterId].party,
    activeCharacterId:this.activeCharacterId};
-  
   return obj;
 
 };
 
-TurnList.prototype._sortByInitiative = function () {
+TurnList.prototype._sortByInitiative = function (a,b) {
   // Utiliza la función Array.sort(). ¡No te implementes tu propia
   // función de ordenación!
   var Clist = [];
@@ -44,11 +45,13 @@ TurnList.prototype._sortByInitiative = function () {
   for(var char in this._charactersById){
       Ilist.push(this._charactersById[char].initiative);
       Clist.push(char);
+     //Clist.push({'characters': this._charactersById[char], 'initiatives': this._charactersById[char].initiative});
 }
   
    return Clist.sort(function(a,b){
      var sort;
-     Ilist.sort(function(c,d){
+    Ilist.sort(function(c,d){
+    
       if(c < d){
         sort = 1;
         return -1;
@@ -61,11 +64,11 @@ TurnList.prototype._sortByInitiative = function () {
       }
 
      });
-return sort;
+   
+   return sort;
    });
    
 
-  //dice que initiative es undefined, pero al menos me deja hacer el sort
 };
 
 module.exports = TurnList;
