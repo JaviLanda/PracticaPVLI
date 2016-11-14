@@ -45,7 +45,8 @@ TurnList.prototype._sortByInitiative = function (a,b) {
   for(var char in this._charactersById){
       Ilist.push(this._charactersById[char].initiative);
       Clist.push(char);
-     //Clist.push({'characters': this._charactersById[char], 'initiatives': this._charactersById[char].initiative});
+     //Clist.push({'characters': this._charactersById[char], ...
+     // ... 'initiatives': this._charactersById[char].initiative});
 }
   
    return Clist.sort(function(a,b){

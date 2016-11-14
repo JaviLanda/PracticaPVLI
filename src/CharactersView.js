@@ -55,8 +55,8 @@ CharactersView.prototype._getViewFor = function (character) {
     },
     set: function (value) {
       // ¿Y este setter para ignorar cualquier acción?
-      writable = false;
-      configurable = false;
+      //writable: false
+      //configurable: false
       
     },
     enumerable: true
