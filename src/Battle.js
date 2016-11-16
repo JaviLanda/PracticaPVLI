@@ -90,7 +90,15 @@ Battle.prototype._extractCharactersById = function (parties) {
     // Genera nombres únicos de acuerdo a las reglas
     // de generación de identificadores que encontrarás en
     // la descripción de la práctica o en la especificación.
-  }
+     if(!idCounters.hasOwnProperty(character.name)){
+        idCounters[character.name] = 0;
+        idCounters[character.name]++;
+        return character.name;
+      }else{
+        idCounters[character.name]++;
+        return character.name + ' ' + (idCounters[character.name]);
+      }
+   } 
 };
 
 Battle.prototype._resetStates = function (charactersById) {
@@ -140,10 +148,10 @@ Battle.prototype._checkEndOfBattle = function () {
 
   function getCommonParty(characters) {
    for (var i in characters)
-      if(characters[i].party === 'heroes'){
+      if(characters[i].party === characters.party){
         return characters[i].party;
       }
-      else if(characters[i].party === 'monsters'){
+      else if(characters[i].party === characters.party){
         return characters[i].party;
       }
       else 
