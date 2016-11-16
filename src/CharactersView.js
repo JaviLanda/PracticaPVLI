@@ -53,13 +53,12 @@ CharactersView.prototype._getViewFor = function (character) {
       return character[feature];
       // ¿Cómo sería este getter para reflejar la propiedad del personaje?
     },
-    set: function (value) {
-      // ¿Y este setter para ignorar cualquier acción?
-      //writable: false
-      //configurable: false
-      
+     set: function (value) {
+     
+     value = character[feature];
     },
-    enumerable: true
+    enumerable: true, 
+    configurable: false
   });
   });
   return view;

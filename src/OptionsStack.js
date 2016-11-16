@@ -17,7 +17,6 @@ function OptionsStack() {
 }
 
 OptionsStack.prototype.select = function (id) {
-  // hay que usar la id, la 'x'
   return this.current.select(id);
 
   // Redirige el comando al último de la pila.

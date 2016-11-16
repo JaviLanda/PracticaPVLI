@@ -81,6 +81,8 @@ Battle.prototype._extractCharactersById = function (parties) {
   return listToMap(characters, useUniqueName);
 
   function assignParty(characters, party) {
+    for (var i in characters)
+      characters[i].party = party;
     // Cambia la party de todos los personajes a la pasada como parámetro.
   }
 
@@ -132,10 +134,20 @@ Battle.prototype._checkEndOfBattle = function () {
   return commonParty ? { winner: commonParty } : null;
 
   function isAlive(character) {
+    return (!character.isDead());
     // Devuelve true si el personaje está vivo.
   }
 
   function getCommonParty(characters) {
+   for (var i in characters)
+      if(characters[i].party === 'heroes'){
+        return characters[i].party;
+      }
+      else if(characters[i].party === 'monsters'){
+        return characters[i].party;
+      }
+      else 
+        return null;
     // Devuelve la party que todos los personajes tienen en común o null en caso
     // de que no haya común.
   }
@@ -155,6 +167,8 @@ Battle.prototype._onAction = function (action) {
     action: action,
     activeCharacterId: this._turns.activeCharacterId
   };
+
+  
   // Debe llamar al método para la acción correspondiente:
   // defend -> _defend; attack -> _attack; cast -> _cast
 };
@@ -226,3 +240,13 @@ Battle.prototype._showScrolls = function (onSelection) {
 };
 
 module.exports = Battle;
+
+
+/*Battle.prototype._showActions = function () {
+  this.options.current = {
+    'attack': true,
+    'defend': true,
+    'cast': true
+  };
+  this.options.current.on('chose', this._onAction.bind(this));
+};*/
