@@ -125,6 +125,7 @@ Battle.prototype._nextTurn = function () {
   if (this._stopped) { return; }
   setTimeout(function () {
     var endOfBattle = this._checkEndOfBattle();
+     //console.log(this._checkEndOfBattle());
     if (endOfBattle) {
       this.emit('end', endOfBattle);
     } else {
@@ -147,16 +148,16 @@ Battle.prototype._checkEndOfBattle = function () {
   }
 
   function getCommonParty(characters) {
-    var eq = false;
-    var i = 0;
-    while(!eq && i < characters.length){
-      if(characters[i].party === characters.party)
-        eq = true;
-      else i++;
+    var partyIni = characters[0].party || null;
+
+    characters.forEach(function(character){
+      if(character.party !== partyIni){
+        partyIni = null;
+      }
+    })
+    
+    return partyIni;
     }
-    if(eq) return characters.party;
-    else return null;
-   }
     // Devuelve la party que todos los personajes tienen en común o null en caso
     // de que no haya común.
     
@@ -225,7 +226,7 @@ Battle.prototype._attack = function () {
     // Implementa lo que pasa cuando se ha seleccionado el objetivo.
     var activeCharacterId = self._action.activeCharacterId;
     self._action.targetId = targetId;
-    self._action.effect = self._charactersById[self._action.activeCharacterId].weapon.effect;
+    self._action.effect = self._charactersById[activeCharacterId].weapon.effect;
     self._executeAction();
     self._restoreDefense(targetId);
    
@@ -236,11 +237,13 @@ Battle.prototype._cast = function () {
   var self = this;
   self._showScrolls(function onScroll(scrollId, scroll) {
     // Implementa lo que pasa cuando se ha seleccionado el hechizo.
+    var activeCharacterId = self._action.activeCharacterId;
     self._showTargets(function onTarget(targetId){
+      
       self._action.targetId = targetId;
       self._action.scrollName = scrollId;
       self._action.effect = scroll.effect;
-      self._charactersById[self._action.activeCharacterId].mp -= scroll.cost;  
+      self._charactersById[activeCharacterId].mp -= scroll.cost;  
       self._executeAction();
       self._restoreDefense(targetId);
     });
@@ -255,16 +258,16 @@ Battle.prototype._executeAction = function () {
   var areAllies = activeCharacter.party === targetCharacter.party;
   
   var wasSuccessful = targetCharacter.applyEffect(effect, areAllies);
-  console.log(targetCharacter);
+
   this._action.success = wasSuccessful;
-console.log(this._action.success);
+
   this._informAction();
   this._nextTurn();
 };
 
 Battle.prototype._informAction = function () {
   this.emit('info', this._action);
-  console.log(this._action);
+  
 };
 
 Battle.prototype._showTargets = function (onSelection) {
@@ -288,9 +291,9 @@ Battle.prototype._showScrolls = function (onSelection) {
   var char = this._charactersById[this._action.activeCharacterId].party;
   var emepe = this._charactersById[this._action.activeCharacterId].mp;
   var Scrolls = {};
-  for(var i in this._grimories[char]){
-    if(emepe >= this._grimories[char][i].cost){
-      Scrolls[i] = this._grimories[char][i];
+  for(var i in this._grimoires[char]){
+    if(emepe >= this._grimoires[char][i].cost){
+      Scrolls[i] = this._grimoires[char][i];
     }
   }
   this.options.current = Scrolls;
@@ -300,11 +303,3 @@ Battle.prototype._showScrolls = function (onSelection) {
 module.exports = Battle;
 
 
-/*Battle.prototype._showActions = function () {
-  this.options.current = {
-    'attack': true,
-    'defend': true,
-    'cast': true
-  };
-  this.options.current.on('chose', this._onAction.bind(this));
-};*/

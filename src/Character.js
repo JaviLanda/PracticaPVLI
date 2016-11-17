@@ -16,9 +16,8 @@ function Character(name, features) {
   // Extrae del parámetro features cada característica y alamacénala en
   // una propiedad.
 
-  //this._mp = features.mp || 0;
-  //this.maxMp = features.maxMp || this._mp;
-  //(HECHO)
+  
+  
 }
 
 Character.prototype._immuneToEffect = ['name', 'weapon'];
@@ -37,7 +36,7 @@ Character.prototype.applyEffect = function (effect, isAlly) {
     if(dice.d100() <= this.defense) return false;
   }
 
-    this.party = effect.party || this.party;
+    //this.party = effect.party || this.party;
     this.initiative = effect.initiative + this.initiative || this.initiative;
     this._defense = effect.defense + this.defense || this.defense;
     //this.weapon = effect.weapon + this.weapon || this.weapon;

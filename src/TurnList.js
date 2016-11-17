@@ -21,9 +21,9 @@ TurnList.prototype.next = function () {
    party:null,
    activeCharacterId:null
    };
-  
+   
   var j = this.turnNumber;
-  this.turnNumber++;
+ this.turnNumber++;
    
   while(!Alive){
     j = j % this.list.length;
@@ -51,8 +51,6 @@ TurnList.prototype._sortByInitiative = function (a,b) {
  var Clist = [];
   var Ilist = [];
   for(var char in this._charactersById){
-      //Ilist.push(this._charactersById[char].initiative);
-      //Clist.push(char);
       Clist.push({charact: char,
        initiatives: this._charactersById[char].initiative});
 }

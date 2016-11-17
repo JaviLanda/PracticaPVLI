@@ -10,8 +10,9 @@ function Item(name, effect) {
 function Weapon(name, damage, extraEffect) {
   extraEffect = extraEffect || new Effect({});
 
+  
   Item.call(this, name, extraEffect);
-  this.effect.hp = -damage;
+ this.effect.hp = -damage;
   for (var i in extraEffect){
     this.effect[i] = extraEffect[i];
   }
@@ -44,7 +45,8 @@ Scroll.prototype.canBeUsed = function (mp) {
 
 }
 function Effect(variations) {
-   for(var name in variations){
+   
+  for(var name in variations){
     this[name] = variations[name];
    }
    // Copia las propiedades que se encuentran en variations como propiedades de
