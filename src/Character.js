@@ -32,36 +32,23 @@ Character.prototype.isDead = function () {
 };
 
 Character.prototype.applyEffect = function (effect, isAlly) {
-  if(isAlly){
+  if(!isAlly){
+  
+    if(dice.d100() <= this.defense) return false;
+  }
 
     this.party = effect.party || this.party;
     this.initiative = effect.initiative + this.initiative || this.initiative;
     this._defense = effect.defense + this.defense || this.defense;
-    this.weapon = effect.weapon + this.weapon || this.weapon;
+    //this.weapon = effect.weapon + this.weapon || this.weapon;
     this._hp = effect.hp + this.hp || this.hp;
     this._mp = effect.mp + this.mp || this.mp;
     this.maxMp = effect.maxMp + this.maxMp || this.maxMp;
     this.maxHp = effect.maxHp + this.maxHp || this.maxHp;
     return true;
-  }
-  else if(dice.d100() === 100){
-
-    this.party = effect.party || this.party;
-    this.initiative = effect.initiative + this.initiative || this.initiative;
-    this._defense = effect.defense + this.defense || this.defense;
-    this.weapon = effect.weapon + this.weapon || this.weapon;
-    this._hp = effect.hp + this.hp || this.hp;
-    this._mp = effect.mp + this.mp || this.mp;
-    this.maxMp = effect.maxMp + this.maxMp || this.maxMp;
-    this.maxHp = effect.maxHp + this.maxHp || this.maxHp;
-    return true;
-  }
-  else if (dice.d100() === 1){
-    return false;
-  }
-
-//DIOOOOOOOOSS COMO SE HACEEEEEEEEEEEEE JODEEERRR
-  // Implementa las reglas de aplicación de efecto para modificar las
+  
+ 
+ // Implementa las reglas de aplicación de efecto para modificar las
   // características del personaje. Recuerda devolver true o false según
   // si el efecto se ha aplicado o no.
 };
